@@ -39,9 +39,11 @@ export class MultiStepResponseService implements IMultiStepResponseService {
     
     // Initialize OpenAI for AI-powered reasoning
     this.openai = new OpenAI({
+      baseURL: "https://openrouter.ai/api/v1",
       apiKey: process.env.OPENAI_API_KEY,
     });
   }
+
 
   /**
    * Generate response using multi-step reasoning
@@ -140,7 +142,7 @@ export class MultiStepResponseService implements IMultiStepResponseService {
           textContent: this.getSourceTextContent(source.id, searchResults),
         })),
         metadata: {
-          modelUsed: 'gpt-4o',
+          modelUsed: 'google/gemma-3-27b-it:free',
           tokensUsed: this.calculateActualTokens(steps),
           stepsCompleted: steps.filter(s => s.status === 'completed').length,
           processingStartTime: startTime,
@@ -269,7 +271,7 @@ Return only valid JSON.`;
 
     try {
       const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o',
+        model: 'google/gemma-3-27b-it:free',
         messages: [
           { role: 'system', content: 'You are an expert at analyzing RFP questions and determining optimal search strategies. Always respond with valid JSON only.' },
           { role: 'user', content: prompt }
@@ -423,7 +425,7 @@ Return only valid JSON.`;
 
     try {
       const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o',
+        model: 'google/gemma-3-27b-it:free',
         messages: [
           { 
             role: 'system', 
@@ -554,7 +556,7 @@ Return only valid JSON.`;
       console.log('Prompt length:', prompt.length);
       
       const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o',
+        model: 'google/gemma-3-27b-it:free',
         messages: [
           { 
             role: 'system', 
@@ -741,7 +743,7 @@ Return only valid JSON.`;
 
     try {
       const response = await this.openai.chat.completions.create({
-        model: 'gpt-4o',
+        model: 'google/gemma-3-27b-it:free',
         messages: [
           { role: 'system', content: 'You are an expert at validating RFP responses for quality and completeness. Always respond with valid JSON only.' },
           { role: 'user', content: prompt }

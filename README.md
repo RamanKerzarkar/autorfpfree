@@ -1,3 +1,5 @@
+# Before setting up .env file go open lib folder you will find a demo .env file i created. If you dont read it the code will definitely not run.
+
 # AutoRFP - AI-Powered RFP Response Platform
 
 AutoRFP is an intelligent platform that automates RFP (Request for Proposal) response generation using advanced AI. Built with Next.js 15 and powered by LlamaIndex, it helps organizations respond to RFPs 80% faster by automatically extracting questions from documents and generating contextual responses based on your knowledge base.
